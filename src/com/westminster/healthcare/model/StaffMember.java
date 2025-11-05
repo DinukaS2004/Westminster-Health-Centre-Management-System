@@ -48,16 +48,11 @@ public abstract class StaffMember {
         this.contactNo = contactNo;
     }
 
-    public abstract void getRole();
+    public abstract String getRole();
 
     @Override
     public String toString() {
-        return "StaffMember{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surName='" + surName + '\'' +
-                ", dob='" + dob + '\'' +
-                ", contactNo='" + contactNo + '\'' +
-                '}';
+        return String.format("ID: %s | Name: %s %s | DOB: %s | Contact: %s | Role: %s",
+                id, name, surName, dob, contactNo, getRole());
     }
 }
