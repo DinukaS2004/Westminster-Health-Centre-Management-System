@@ -1,4 +1,9 @@
 package com.westminster.healthcare.manager;
 
-public class HealthCentreManager {
+public interface HealthCentreManager {
+
+    void addStaff();
+    void viewStaff();
+    void removeStaff();
+
 }
