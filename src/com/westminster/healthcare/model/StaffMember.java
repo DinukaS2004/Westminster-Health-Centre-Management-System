@@ -2,13 +2,13 @@ package com.westminster.healthcare.model;
 
 public abstract class StaffMember {
 
-    private int id;
+    private String id;
     private String name;
     private String surName;
     private String dob;
     private String contactNo;
 
-    public StaffMember(int id,String name,String surName,String dob, String contactNo){
+    public StaffMember(String id,String name,String surName,String dob, String contactNo){
         this.id = id;
         this.name = name;
         this.surName = surName;
@@ -16,7 +16,7 @@ public abstract class StaffMember {
         this.contactNo = contactNo;
     }
 
-    public int getId(){
+    public String getId(){
         return id;
     }
     public String getName(){
@@ -32,7 +32,7 @@ public abstract class StaffMember {
         return contactNo;
     }
 
-    public void setId(int id){
+    public void setId(String id){
         this.id = id;
     }
     public void setName(String name){

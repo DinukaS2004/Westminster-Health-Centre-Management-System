@@ -6,7 +6,7 @@ public class Doctor extends StaffMember {
     private String specialisation;
     private int consultationsPerWeek;
 
-    public Doctor(int id,String name,String surName,String dob,String contactNo, String licenceNumber,String specialisation,int consultationsPerWeek) {
+    public Doctor(String id,String name,String surName,String dob,String contactNo, String licenceNumber,String specialisation,int consultationsPerWeek) {
         super(id,name,surName,dob,contactNo);
         this.licenceNumber=licenceNumber;
         this.specialisation=specialisation;
