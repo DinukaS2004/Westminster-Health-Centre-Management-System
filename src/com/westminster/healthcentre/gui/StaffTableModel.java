@@ -3,7 +3,7 @@ import com.westminster.healthcare.model.*;
 import javax.swing.table.AbstractTableModel; 
 import java.util.ArrayList;
 
-public class StaffTableModel extendes AbstractTableModel{
+public class StaffTableModel extends AbstractTableModel{
     private ArrayList<StaffMember> staffList;
     private final String [] columnNames = {"ID","Name","Surname","Role","DOB","Contact"};
 
@@ -28,7 +28,7 @@ public class StaffTableModel extendes AbstractTableModel{
         switch (col) {
             case 0: return staff.getId();
             case 1: return staff.getName();
-            case 2: return staff.getSurname();
+            case 2: return staff.getSurName();
             case 3: return staff.getRole();
             case 4: return staff.getDob();
             case 5: return staff.getContactNo();
@@ -38,8 +38,5 @@ public class StaffTableModel extendes AbstractTableModel{
 
     public void refresh() {
         fireTableDataChanged();
-    }
-
-    private void fireTableDataChanged() {
     }
 }
