@@ -87,16 +87,37 @@ public class WestminsterHealthCentreManager implements HealthCentreManager{
 
     @Override
     public void removeStaff(){
-        System.out.println("Removing Staff");
+        System.out.println("===Remove Staff === ");
+        System.out.println();
+        System.out.print("Enter staff ID to remove : ");
+        String id = input.nextLine().trim();
+
+        StaffMember staff = searchById(id);
+
+        if(staff != null){
+            System.out.println("Fouond : "+staff);
+            System.out.println();
+            System.out.print("Are you want to remove this staff ? (Y/N) : ");
+            String confirm = input.nextLine().trim();
+
+            if(confirm.equalsIgnoreCase("Y")){
+                staffList.remove(staff);
+                System.out.println("Staff removed successfully!");
+            }else{
+                System.out.println("Remove cancelled!");
+            }
+        }else{
+            System.out.println("Staff not found!");
+        }
     }
 
     public ArrayList <StaffMember> getStaffList(){
         return staffList;
     }
 
-    // Week 5 testing
-    public void addSampleStaff(StaffMember staff) {
-        staffList.add(staff);
+    public void sortByName(){
+        staffList.sort(Comparator.comparing(StaffMember::getSurName).thenComparing(StaffMember::getName));
+        System.out.println("Staff list sorted by surname and name");
     }
 
     //Search By ID
@@ -108,4 +129,20 @@ public class WestminsterHealthCentreManager implements HealthCentreManager{
         }
         return null;
     }
+    public void displayStatistics(){
+        long doctors = staffList.stream().filter(s->s instanceof Doctor).count();
+        long receptionists = staffList.stream().filter(s->s instanceof Receptionist).count();
+
+        System.out.println("\n=== Statistics ===");
+        System.out.println("Total Staff: " + staffList.size());
+        System.out.println("Doctors: " + doctors);
+        System.out.println("Receptionists: " + receptionists);
+    }
+
+    public void exit() {
+        System.out.println("Exiting program...");
+        input.close();
+        System.exit(0);
+    }
+
 }
