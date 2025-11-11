@@ -1,5 +1,5 @@
 package com.westminster.healthcare.main;
-
+import java.util.*;
 import com.westminster.healthcare.manager.WestminsterHealthCentreManager;
 import com.westminster.healthcare.model.Doctor;
 import com.westminster.healthcare.model.Receptionist;
@@ -9,16 +9,42 @@ public class HealthCareSystem {
 
         WestminsterHealthCentreManager manager = new WestminsterHealthCentreManager();
 
-        Doctor d1 = new Doctor("D001", "John", "Smith", "1978-09-12", "1234567890",
-                "ML12345", "Cardiology", 15);
+        Scanner input = new Scanner(System.in);
 
-        Receptionist r1 = new Receptionist("R001", "Alice", "Brown", "1985-02-18",
-                "0987654321", "Desk-03", 40);
+        while (true) {
+            System.out.println("\n=== Westminster Health Centre Management System ===");
+            System.out.println("1. Add New Staff Member");
+            System.out.println("2. Remove Staff Member");
+            System.out.println("3. View All Staff");
+            System.out.println("4. Search Staff by ID");
+            System.out.println("5. Sort Staff by Name");
+            System.out.println("6. Display Statistics");
+            System.out.println("0. Exit");
+            System.out.print("Enter your choice: ");
 
-        manager.addStaff(d1);
-        manager.addStaff(r1);
+            String choice = input.nextLine();
 
-        manager.viewStaff();
+            switch (choice) {
+                case "1": manager.addStaff(); break;
+                case "2": manager.removeStaff(); break;
+                case "3": manager.viewStaff(); break;
+                case "4":
+                    System.out.print("Enter staff ID to search: ");
+                    String id = input.nextLine();
+                    var staff = manager.searchById(id);
+                    System.out.println(staff != null ? staff : "No staff found!");
+                    break;
+                case "5": manager.sortByName(); break;
+                case "6": manager.displayStatistics(); break;
+                case "0":
+                    System.out.println("Exiting...");
+                    input.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+            }
+        }
     }
 
 }
