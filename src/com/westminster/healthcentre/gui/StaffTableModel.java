@@ -7,9 +7,11 @@ public class StaffTableModel extends AbstractTableModel{
     private ArrayList<StaffMember> staffList;
     private final String [] columnNames = {"ID","Name","Surname","Role","DOB","Contact"};
 
-    public void staffTableModel(ArrayList <StaffMember> staffList){
+
+    public StaffTableModel(ArrayList<StaffMember> staffList) {
         this.staffList = staffList;
     }
+
     @Override
     public int getRowCount(){
         return staffList.size();
